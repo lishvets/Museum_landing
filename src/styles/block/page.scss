@@ -1,0 +1,44 @@
+.page {
+  font-family: Montserrat, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(-100%);
+
+
+    &:target {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.header,
+.main,
+.footer {
+  transition: background-color 0.3s ease;
+}
+
+.page:has(.page__menu:target) .header,
+.page:has(.page__menu:target) .main,
+.page:has(.page__menu:target) .footer {
+  background-color: $bg-color;
+}
